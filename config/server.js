@@ -10,7 +10,10 @@ app.set('view engine', 'ejs');
 app.set('views','./app/views');
 
 // para incluir diretorio de rotas para variavel app
-consign().include('app/routes').into(app);
+consign().include('app/routes')
+.then('config/DBConnection.js')
+.then('app/models')
+.into(app);
 
 
 // exporta o variavel que armazena os caminhos das view e engine
